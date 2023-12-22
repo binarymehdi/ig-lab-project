@@ -3,14 +3,14 @@ import "./Timeline.css";
 import Post from "./Post/Post";
 import axios from "axios";
 
-const Timeline = () => {
+const Timeline = ({ refreshTrigger }) => {
     const [data, setData] = useState({ posts: [], users: [] });
 
     useEffect(() => {
         axios.get("http://localhost:3001/getPosts").then((response) => {
             setData(response.data);
         });
-    }, []);
+    }, [refreshTrigger]); // Depend on refreshTrigger
 
     const findUserById = (userId) => {
         return data.users.find(user => user.id === userId);

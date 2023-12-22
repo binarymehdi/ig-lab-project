@@ -1,10 +1,10 @@
 
 import "./Nav.css";
 import { FaHome } from "react-icons/fa";
-import { CiSearch } from "react-icons/ci";
+import { CiSearch} from "react-icons/ci";
+import { IoMdAdd } from "react-icons/io";
 import { RiCompassDiscoverLine } from "react-icons/ri";
 import Logo from "./Logo.png";
-import { IconName } from "react-icons/ai";
 function Nav() {
       return (
             <div classname="nav">
@@ -23,6 +23,10 @@ function Nav() {
                         <button className="btn">
                               <RiCompassDiscoverLine size={'1.5rem'} />
                               <span>Discover</span>
+                        </button>
+                        <button className="btn">
+                              < IoMdAdd size={'1.5rem'} />
+                              <span>Create Post</span>
                         </button>
                   </div>
             </div>

@@ -2,7 +2,6 @@ import React from "react";
 import "./Post.css";
 import { FcLike } from "react-icons/fc";
 import { FaRegComment } from "react-icons/fa";
-import postImage from "./posts_imgs/post1.jpg";
 
 function Post({ user_name, caption, image }) {
     console.log(image);

@@ -19,7 +19,7 @@ const createUser = (request, response) => {
     pool.query('INSERT INTO customer (customercode, firstname,lastname) VALUES ($1, $2,$3)', [customercode, firstname, lastname], (error,
         results) => {
         if (error) {
-            throw error
+            response.status(400).send('customerAdded')
         }
         response.status(201).send('customerAdded')
     })
@@ -27,11 +27,13 @@ const createUser = (request, response) => {
 
 // writing to the database
 const createPost = (request, response) => {
-    const { title, body, userId } = request.body
-    pool.query('INSERT INTO posts (title, body, userId) VALUES ($1, $2,$3)', [title, body, userId], (error,
+    const { user_id, content, caption, pictureurl } = request.body
+    console.log(request.body)
+    pool.query('INSERT INTO posts (user_id, content, caption, pictureurl) VALUES ($1, $2,$3, $4)', [user_id, content, caption, pictureurl], (error,
         results) => {
         if (error) {
             throw error
+            console.log(error);
         }
         response.status(201).send('Post Added')
     })
@@ -48,7 +50,6 @@ const getPosts = async (request, response) => {
 
         const data = { posts: posts, users: users };
         response.status(200).json(data);
-        console.log(data);
     } catch (error) {
         console.error(error);
         response.status(500).send('Server Error');
